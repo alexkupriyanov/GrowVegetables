@@ -158,7 +158,7 @@ namespace Farm1
             else return CellState.Rotten;
         }
     }
-
+     
     class Points
     {
         private int sum = 10;
