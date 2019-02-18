@@ -30,6 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.fast = new System.Windows.Forms.Button();
+            this.normal = new System.Windows.Forms.Button();
+            this.pause = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -49,13 +53,15 @@
             this.checkBox15 = new System.Windows.Forms.CheckBox();
             this.checkBox16 = new System.Windows.Forms.CheckBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.fast);
+            this.panel1.Controls.Add(this.normal);
+            this.panel1.Controls.Add(this.pause);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -63,6 +69,45 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(441, 117);
             this.panel1.TabIndex = 0;
+            // 
+            // fast
+            // 
+            this.fast.Location = new System.Drawing.Point(177, 69);
+            this.fast.Name = "fast";
+            this.fast.Size = new System.Drawing.Size(75, 23);
+            this.fast.TabIndex = 4;
+            this.fast.Text = "Fast";
+            this.fast.UseVisualStyleBackColor = true;
+            this.fast.Click += new System.EventHandler(this.fast_Click);
+            // 
+            // normal
+            // 
+            this.normal.Location = new System.Drawing.Point(96, 69);
+            this.normal.Name = "normal";
+            this.normal.Size = new System.Drawing.Size(75, 23);
+            this.normal.TabIndex = 3;
+            this.normal.Text = "Normal";
+            this.normal.UseVisualStyleBackColor = true;
+            this.normal.Click += new System.EventHandler(this.normal_Click);
+            // 
+            // pause
+            // 
+            this.pause.Location = new System.Drawing.Point(15, 69);
+            this.pause.Name = "pause";
+            this.pause.Size = new System.Drawing.Size(75, 23);
+            this.pause.TabIndex = 2;
+            this.pause.Text = "Pause";
+            this.pause.UseVisualStyleBackColor = true;
+            this.pause.Click += new System.EventHandler(this.pause_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 33);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "label2";
             // 
             // label1
             // 
@@ -294,15 +339,6 @@
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 33);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -342,6 +378,9 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button fast;
+        private System.Windows.Forms.Button normal;
+        private System.Windows.Forms.Button pause;
     }
 }
 

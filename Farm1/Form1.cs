@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace Farm1
 {
+
     public partial class Form1 : Form
     {
         Dictionary<CheckBox, Cell> field = new Dictionary<CheckBox, Cell>();
@@ -41,43 +42,46 @@ namespace Farm1
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox cb = sender as CheckBox;
-            if (cb.Checked) StartGrow(cb);
-            else Cut(cb);
+            if(timer1.Enabled)
+            {
+                if (cb.Checked) StartGrow(cb);
+                else Cut(cb);
+            }
         }
 
         private void Cut(CheckBox cb)
         {
-            CellState status = field[cb].GetStatus();
-            switch (status)
-            {
-                case CellState.Growing:
-                    score.AddPoint(GrowingScore);
-                    break;
-                case CellState.Green:
-                    score.AddPoint(GreenScore);
-                    break;
-                case CellState.Nearby:
-                    score.AddPoint(NearbyScore);
-                    break;
-                case CellState.Mature:
-                    score.AddPoint(MatureScore);
-                    break;
-                case CellState.Rotten:
-                    score.SubPoint(ClearPrice);
-                    break;
+                CellState status = field[cb].GetStatus();
+                switch (status)
+                {
+                    case CellState.Growing:
+                        score.AddPoint(GrowingScore);
+                        break;
+                    case CellState.Green:
+                        score.AddPoint(GreenScore);
+                        break;
+                    case CellState.Nearby:
+                        score.AddPoint(NearbyScore);
+                        break;
+                    case CellState.Mature:
+                        score.AddPoint(MatureScore);
+                        break;
+                    case CellState.Rotten:
+                        score.SubPoint(ClearPrice);
+                        break;
 
-            }
-            field[cb].Cut();
-            UpdateBox(cb);     
-            UpdateMoney();
+                }
+                field[cb].Cut();
+                UpdateBox(cb);
+                UpdateMoney();            
         }
 
         private void StartGrow(CheckBox cb)
         {
-            field[cb].StartGrowing();
-            UpdateBox(cb);
-            score.SubPoint(PlantPrice);
-            UpdateMoney();
+                field[cb].StartGrowing();
+                UpdateBox(cb);
+                score.SubPoint(PlantPrice);
+                UpdateMoney();
         }
 
         int date = 0;
@@ -110,6 +114,29 @@ namespace Farm1
         private void UpdateMoney()
         {
             label2.Text = "Money: " + score.Sum;
+        }
+
+        private void pause_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
+        }
+
+        private void normal_Click(object sender, EventArgs e)
+        {
+            if(!timer1.Enabled)
+            {
+                timer1.Start();
+            }
+            timer1.Interval = 100;
+        }
+
+        private void fast_Click(object sender, EventArgs e)
+        {
+            if (!timer1.Enabled)
+            {
+                timer1.Start();
+            }
+            timer1.Interval = 50;
         }
     }
 
